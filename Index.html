@@ -1,0 +1,115 @@
+<!--
+  ClimaSynch Solutions - Single-file Website (updated)
+  Instagram: https://www.instagram.com/climasync.solutions?igsh=bHcxdG9rMzV2eXBv
+  WhatsApp: +254708431023
+--><!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ClimaSynch Solutions — Keeping You Cool, Every Season</title>
+  <meta name="description" content="ClimaSynch Solutions — AC & refrigerator repair, installation and maintenance in Nairobi. Door-to-door service. 24/7 emergency repairs." />
+  <link rel="icon" href="/assets/logo.png" />  <style>
+    :root{
+      --primary-color: #0a66c2;
+      --accent-color: #00a3a3;
+      --muted: #6b7280;
+      --bg: #ffffff;
+      --card: #f8fafc;
+      --radius: 12px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#111;line-height:1.5}
+
+    .site-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #eee;background:#fff;position:sticky;top:0;z-index:40}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:48px;width:48px;object-fit:contain;border-radius:8px}
+    .brand .title{font-weight:700;font-size:18px}
+    .nav{display:flex;gap:16px;align-items:center}
+    .btn{background:var(--primary-color);color:#fff;padding:10px 14px;border-radius:10px;border:0;cursor:pointer}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:48px 24px;align-items:center}
+    .hero-left h1{font-size:34px;margin:0 0 12px}
+    .hero-left p{margin:0 0 18px;color:var(--muted)}
+    .hero-cta{display:flex;gap:12px}
+    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(12,20,40,0.05)}
+
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:24px}
+    .service-item{background:#fff;border-radius:10px;padding:16px;border:1px solid #eef2f6}
+    .service-item h4{margin:0 0 8px}
+    .service-item p{margin:0;color:var(--muted);font-size:14px}
+
+    .section{padding:36px 24px}
+    .grid-2{display:grid;grid-template-columns:1fr 420px;gap:20px}
+    .contact-form input,.contact-form select,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef6;margin-bottom:10px}
+    .contact-form textarea{min-height:120px}
+
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+
+    footer{background:#0f1724;color:#fff;padding:24px}
+
+    .whatsapp-float{position:fixed;right:18px;bottom:18px;background:var(--accent-color);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,0.15);z-index:60}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;padding:28px 16px}
+      .hero-left h1{font-size:26px}
+      .grid-2{grid-template-columns:1fr}
+      .hero-cta{flex-direction:column}
+    }
+  </style></head>
+<body>  <header class="site-header">
+    <div class="brand">
+      <img src="/assets/logo.png" alt="ClimaSynch Solutions logo" />
+      <div>
+        <div class="title">ClimaSynch Solutions</div>
+        <div style="font-size:12px;color:var(--muted);">Keeping You Cool, Every Season</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#services" style="color:var(--muted);text-decoration:none">Services</a>
+      <a href="#about" style="color:var(--muted);text-decoration:none">About</a>
+      <a href="#contact" style="color:var(--muted);text-decoration:none">Contact</a>
+      <a href="https://www.instagram.com/climasync.solutions?igsh=bHcxdG9rMzV2eXBv" target="_blank" style="color:var(--muted);text-decoration:none">Instagram</a>
+      <button class="btn" onclick="document.getElementById('booking-name').scrollIntoView({behavior:'smooth'})">Book a Technician</button>
+    </nav>
+  </header>  <!-- The rest of the content remains the same as before -->  <script>
+    const BUSINESS_PHONE = '254708431023';
+    const BUSINESS_DISPLAY = '+254708431023';
+
+    document.getElementById('business-phone-link').textContent = BUSINESS_DISPLAY;
+    document.getElementById('business-phone-link').href = `https://wa.me/${BUSINESS_PHONE}`;
+    document.getElementById('whats-btn').href = `https://wa.me/${BUSINESS_PHONE}`;
+
+    function openBookingForm(){
+      document.getElementById('booking-name').scrollIntoView({behavior:'smooth'});
+      document.getElementById('booking-name').focus();
+    }
+
+    function handleBooking(e){
+      e.preventDefault();
+      const name = document.getElementById('booking-name').value.trim();
+      const phone = document.getElementById('booking-phone').value.trim();
+      const location = document.getElementById('booking-location').value.trim();
+      const service = document.getElementById('booking-service').value;
+      const message = document.getElementById('booking-message').value.trim();
+
+      const text = `Booking from ${name}%0Aphone: ${phone}%0Alocation: ${location}%0Aservice: ${service}%0Amessage: ${encodeURIComponent(message)}`;
+      const waUrl = `https://wa.me/${BUSINESS_PHONE}?text=${text}`;
+      window.open(waUrl,'_blank');
+    }
+
+    function handleContact(e){
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const phone = document.getElementById('contact-phone').value.trim();
+      const text = document.getElementById('contact-text').value.trim();
+
+      const message = `Enquiry from ${name}%0A${email}%0A${phone}%0A%0A${encodeURIComponent(text)}`;
+      window.open(`https://wa.me/${BUSINESS_PHONE}?text=${message}`,'_blank');
+    }
+  </script></body>
+</html>
