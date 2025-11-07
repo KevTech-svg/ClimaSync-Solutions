@@ -1,8 +1,4 @@
-<!--
-  ClimaSynch Solutions - Single-file Website (updated)
-  Instagram: https://www.instagram.com/climasync.solutions?igsh=bHcxdG9rMzV2eXBv
-  WhatsApp: +254708431023
---><!doctype html>
+<!doctype html>
 
 <html lang="en">
 <head>
@@ -12,59 +8,300 @@
   <meta name="description" content="ClimaSynch Solutions — AC & refrigerator repair, installation and maintenance in Nairobi. Door-to-door service. 24/7 emergency repairs." />
   <link rel="icon" href="/assets/logo.png" />  <style>
     :root{
-      --primary-color: #0a66c2;
-      --accent-color: #00a3a3;
-      --muted: #6b7280;
-      --bg: #ffffff;
-      --card: #f8fafc;
+      --primary-color: #0b61b9; /* deep blue */
+      --accent-color: #ffffff;  /* white */
+      --muted: #9aa6bb;
+      --bg-start: #04263f; /* deep blue gradient start */
+      --bg-end: #0b61b9;   /* deep blue gradient end */
+      --card: rgba(255,255,255,0.04);
+      --glass: rgba(255,255,255,0.06);
       --radius: 12px;
       font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:#111;line-height:1.5}
+    body{margin:0;background:linear-gradient(180deg,var(--bg-start),var(--bg-end));color:#f8fbff;line-height:1.5}
 
-    .site-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #eee;background:#fff;position:sticky;top:0;z-index:40}
+    /* Header */
+    .site-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:transparent;position:sticky;top:0;z-index:50}
     .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:48px;width:48px;object-fit:contain;border-radius:8px}
-    .brand .title{font-weight:700;font-size:18px}
-    .nav{display:flex;gap:16px;align-items:center}
-    .btn{background:var(--primary-color);color:#fff;padding:10px 14px;border-radius:10px;border:0;cursor:pointer}
+    .brand img{height:48px;width:48px;object-fit:contain;border-radius:10px;background:#fff;padding:6px}
+    .brand .title{font-weight:800;font-size:18px;color:var(--accent-color)}
+    .nav{display:flex;gap:14px;align-items:center}
+    .nav a{color:rgba(255,255,255,0.9);text-decoration:none;font-size:14px}
+    .btn{background:var(--accent-color);color:var(--primary-color);padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
 
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:48px 24px;align-items:center}
-    .hero-left h1{font-size:34px;margin:0 0 12px}
-    .hero-left p{margin:0 0 18px;color:var(--muted)}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:56px 32px;align-items:center}
+    .hero .content{max-width:760px}
+    .hero h1{font-size:40px;margin:0 0 12px;line-height:1.02;opacity:0;transform:translateY(8px);animation:fadeUp 900ms ease forwards}
+    .hero p{margin:0 0 18px;color:rgba(255,255,255,0.88)}
     .hero-cta{display:flex;gap:12px}
-    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(12,20,40,0.05)}
 
-    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:24px}
-    .service-item{background:#fff;border-radius:10px;padding:16px;border:1px solid #eef2f6}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));padding:22px;border-radius:14px;backdrop-filter: blur(6px);box-shadow:0 8px 30px rgba(3,12,30,0.45);border:1px solid rgba(255,255,255,0.06)}
+
+    /* Services */
+    .section{padding:36px 24px}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px}
+    .service-item{background:rgba(255,255,255,0.03);border-radius:10px;padding:14px;border:1px solid rgba(255,255,255,0.04)}
+    .service-item img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:10px}
     .service-item h4{margin:0 0 8px}
     .service-item p{margin:0;color:var(--muted);font-size:14px}
 
-    .section{padding:36px 24px}
+    /* About + Reviews grid */
     .grid-2{display:grid;grid-template-columns:1fr 420px;gap:20px}
-    .contact-form input,.contact-form select,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef6;margin-bottom:10px}
-    .contact-form textarea{min-height:120px}
+    .contact-form input,.contact-form select,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);margin-bottom:10px;background:transparent;color:#fff}
+    .contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,0.6)}
 
-    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+    .review-card{background:rgba(255,255,255,0.03);padding:12px;border-radius:10px}
 
-    footer{background:#0f1724;color:#fff;padding:24px}
+    footer{background:transparent;color:rgba(255,255,255,0.9);padding:24px;border-top:1px solid rgba(255,255,255,0.03)}
 
-    .whatsapp-float{position:fixed;right:18px;bottom:18px;background:var(--accent-color);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,0.15);z-index:60}
+    /* Floating action buttons */
+    .fab-wrap{position:fixed;right:18px;bottom:18px;display:flex;gap:10px;z-index:120}
+    .fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--primary-color);box-shadow:0 10px 30px rgba(2,6,23,0.45);border:0;cursor:pointer}
+    .fab.small{width:44px;height:44px}
 
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;padding:28px 16px}
-      .hero-left h1{font-size:26px}
+    .fab img{width:22px;height:22px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;padding:32px 16px}
+      .hero h1{font-size:28px}
       .grid-2{grid-template-columns:1fr}
-      .hero-cta{flex-direction:column}
+      .hero-card{margin-top:12px}
     }
+
+    @keyframes fadeUp{
+      to{opacity:1;transform:none}
+    }
+
   </style></head>
 <body>  <header class="site-header">
     <div class="brand">
       <img src="/assets/logo.png" alt="ClimaSynch Solutions logo" />
       <div>
         <div class="title">ClimaSynch Solutions</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.85)">Keeping You Cool, Every Season</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.instagram.com/climasync.solutions" target="_blank">Instagram</a>
+      <button class="btn" onclick="document.getElementById('booking-name').scrollIntoView({behavior:'smooth'})">Book Service</button>
+    </nav>
+  </header>  <!-- HERO: background image with overlay -->  <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1581093458401-9b5c8b1b9d6a?auto=format&fit=crop&w=1800&q=60');background-size:cover;background-position:center;position:relative;border-bottom:1px solid rgba(255,255,255,0.05);">
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(4,38,63,0.72), rgba(11,97,185,0.45));z-index:0;border-bottom:1px solid rgba(255,255,255,0.02)"></div><div class="content" style="position:relative;z-index:2">
+  <h1>Keeping You Cool, Every Season</h1>
+  <p>ClimaSynch Solutions provides professional installation, repair and preventive maintenance for air conditioners and refrigerators across Nairobi. Door-to-door service with certified technicians and fast response.</p>
+  <div class="hero-cta">
+    <button class="btn" onclick="document.getElementById('booking-name').scrollIntoView({behavior:'smooth'})">Book Service</button>
+    <a class="hero-card" href="#services" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:12px">
+      <div style="font-weight:700">Our Services</div>
+      <div style="color:var(--muted);font-size:13px">Repair · Installation · Cold Rooms</div>
+    </a>
+  </div>
+</div>
+
+<aside class="hero-card" style="position:relative;z-index:2">
+  <h3 style="margin-top:0">Quick Booking</h3>
+  <form id="booking-form" class="contact-form" onsubmit="handleBooking(event)">
+    <input id="booking-name" name="name" placeholder="Your full name" required />
+    <input id="booking-phone" name="phone" placeholder="Phone (e.g. +2547...)" required />
+    <input id="booking-location" name="location" placeholder="Location (estate, street)" required />
+    <select id="booking-service" name="service" required>
+      <option value="">Select service</option>
+      <option>AC Repair</option>
+      <option>AC Installation</option>
+      <option>Fridge/Freezer Repair</option>
+      <option>Preventive Maintenance</option>
+      <option>Cold Room Setup</option>
+      <option>Commercial Refrigeration</option>
+      <option>Emergency Call-Out</option>
+    </select>
+    <textarea id="booking-message" name="message" placeholder="Describe the problem (optional)"></textarea>
+    <button class="btn" type="submit">Send Booking</button>
+  </form>
+  <p style="font-size:13px;color:rgba(255,255,255,0.8);margin-top:10px">Or use the buttons at the bottom-right to call or message us on WhatsApp.</p>
+</aside>
+
+  </section>  <!-- SERVICES -->  <section id="services" class="section">
+    <h2 style="margin-top:0;color:var(--accent-color)">Our Services</h2>
+    <div class="services">
+      <div class="service-item">
+        <img src="https://images.unsplash.com/photo-1581578017428-9b2e6fb2a3c7?auto=format&fit=crop&w=800&q=60" alt="AC Installation"/>
+        <h4>AC Installation</h4>
+        <p>Professional installation of split units, ducted systems and VRF with neat, safe mounting and commissioning.</p>
+      </div><div class="service-item">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=60" alt="AC Repair"/>
+    <h4>AC Repair</h4>
+    <p>Rapid diagnostics and repairs — compressors, refrigerant leaks, fan motors, controls and electrical faults.</p>
+  </div>
+
+  <div class="service-item">
+    <img src="https://images.unsplash.com/photo-1581578017424-8b1b3d2b6c2c?auto=format&fit=crop&w=800&q=60" alt="Fridge Repair"/>
+    <h4>Fridge & Freezer Repair</h4>
+    <p>Domestic and commercial refrigeration repairs, defrost systems, thermostats and cooling circuit service.</p>
+  </div>
+
+  <div class="service-item">
+    <img src="https://images.unsplash.com/photo-1582719478180-4a2f6f8c1f3e?auto=format&fit=crop&w=800&q=60" alt="Preventive Maintenance"/>
+    <h4>Preventive Maintenance</h4>
+    <p>Scheduled maintenance to keep systems efficient, lower energy bills and extend equipment life.</p>
+  </div>
+</div>
+
+  </section>  <!-- ABOUT + CONTACT -->  <section id="about" class="section" style="background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)">
+    <div class="grid-2">
+      <div>
+        <h2 style="color:var(--accent-color);margin-top:0">About ClimaSynch Solutions</h2>
+        <p style="color:rgba(255,255,255,0.85)">ClimaSynch Solutions specializes in AC and refrigerator repair, installation, and maintenance across Nairobi. Our mission is to keep your home and business cool every season with fast, reliable, and affordable door-to-door service. Our technicians are certified and backed by a service warranty.</p><h3 style="margin-bottom:8px">Why choose us?</h3>
+    <ul style="color:var(--muted);padding-left:18px">
+      <li>Door-to-door visits across Nairobi</li>
+      <li>24/7 emergency repairs</li>
+      <li>Certified technicians and warranty on work</li>
+      <li>Transparent pricing and on-site quotations</li>
+    </ul>
+
+    <h3 id="reviews" style="color:var(--accent-color)">Customer Reviews</h3>
+    <div class="reviews">
+      <div class="review-card">
+        <div style="font-weight:700">★★★★★</div>
+        <p style="margin:6px 0">"Excellent service! The technician arrived on time and fixed my fridge quickly."</p>
+        <div style="font-size:13px;color:var(--muted)">— Mary N., Nairobi</div>
+      </div>
+
+      <div class="review-card">
+        <div style="font-weight:700">★★★★★</div>
+        <p style="margin:6px 0">"Professional and reliable team. My AC works perfectly now."</p>
+        <div style="font-size:13px;color:var(--muted)">— James K., Westlands</div>
+      </div>
+
+      <div class="review-card">
+        <div style="font-weight:700">★★★★☆</div>
+        <p style="margin:6px 0">"Fast response and fair pricing. Highly recommend ClimaSynch Solutions."</p>
+        <div style="font-size:13px;color:var(--muted)">— Lucy W., Kasarani</div>
+      </div>
+    </div>
+  </div>
+
+  <aside>
+    <div class="hero-card">
+      <h3 style="margin-top:0">Contact & Quick Info</h3>
+      <p style="margin:0 0 8px">Location: Nairobi — Door-to-door service</p>
+      <p style="margin:0 0 8px">Email: <a href="mailto:info@climasynch.co.ke" style="color:rgba(255,255,255,0.9)">info@climasynch.co.ke</a></p>
+      <p style="margin:0 0 8px">Phone / WhatsApp: <a id="business-phone-link" href="#" style="color:rgba(255,255,255,0.95)">+254 708 431 023</a></p>
+      <div style="margin-top:12px">
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div style="height:12px"></div>
+
+    <div class="hero-card">
+      <h3 style="margin-top:0">Service Hours</h3>
+      <p style="margin:0">Mon - Sat: 08:00 — 18:00</p>
+      <p style="margin:0">Emergency: 24/7</p>
+    </div>
+  </aside>
+</div>
+
+  </section>  <!-- CONTACT FORM -->  <section id="contact" class="section">
+    <h2 style="color:var(--accent-color);margin-top:0">Contact & Bookings</h2>
+    <div class="grid-2">
+      <div>
+        <p style="color:rgba(255,255,255,0.85)">Fill the booking form to request a technician. We'll reply via WhatsApp or call to confirm availability and give an on-site quote.</p>
+        <div class="hero-card">
+          <h3 style="margin-top:0">General Enquiries</h3>
+          <form id="contact-form" class="contact-form" onsubmit="handleContact(event)">
+            <input id="contact-name" placeholder="Your name" required />
+            <input id="contact-email" placeholder="Email" type="email" required />
+            <input id="contact-phone" placeholder="Phone" required />
+            <textarea id="contact-text" placeholder="How can we help?" required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div><aside>
+    <div class="hero-card">
+      <h3 style="margin-top:0">Business Details</h3>
+      <p style="margin:0;color:var(--muted)">ClimaSynch Solutions — Nairobi</p>
+      <p style="margin:0;color:var(--muted)">Licensed technicians · Service warranty</p>
+    </div>
+  </aside>
+</div>
+
+  </section>  <footer>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div>
+        <div style="font-weight:700">ClimaSynch Solutions</div>
+        <div style="font-size:13px;opacity:0.9">Keeping You Cool, Every Season</div>
+      </div>
+      <div style="opacity:0.9">© ClimaSynch Solutions — Nairobi</div>
+    </div>
+  </footer>  <!-- Floating action buttons (Call | WhatsApp | Instagram) side-by-side -->  <div class="fab-wrap" aria-hidden="false">
+    <a class="fab" id="call-btn" href="tel:+254708431023" title="Call Us">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230b61b9'><path d='M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 01.95-.27c1.02.25 2.08.38 3.18.38a1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.1.13 2.16.38 3.18a1 1 0 01-.26.95l-2.0 2.66z'/></svg>" alt="Call" />
+    </a><a class="fab" id="wa-btn" href="#" title="WhatsApp" target="_blank">
+  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230b61b9'><path d='M20.52 3.48C18.36 1.32 15.6 .2 12.77.5 7.64 1 3.82 4.97 3.01 9.9c-.78 4.63 1.16 9.06 5.23 11.59L3 24l3.88-1.02C9.43 23.33 10.07 23.5 10.71 23.5c4.63 0 8.89-2.9 10.5-7.13 1.36-3.57.56-7.8-1.6-10.87z'/></svg>" alt="WhatsApp" />
+</a>
+
+<a class="fab" id="ig-btn" href="https://www.instagram.com/climasync.solutions" title="Instagram" target="_blank">
+  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230b61b9'><path d='M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 6.5A4.5 4.5 0 1016.5 13 4.5 4.5 0 0012 8.5zm5.2-2.8a1.05 1.05 0 11-1.05-1.05 1.05 1.05 0 011.05 1.05z'/></svg>" alt="Instagram" />
+</a>
+
+  </div>  <script>
+    // ===== CONFIG =====
+    const BUSINESS_PHONE = '254708431023'; // Nairobi WhatsApp (no plus sign)
+    const BUSINESS_DISPLAY = '+254 708 431 023';
+    const IG_URL = 'https://www.instagram.com/climasync.solutions';
+
+    // Update visible phone link
+    document.getElementById('business-phone-link').textContent = BUSINESS_DISPLAY;
+    document.getElementById('business-phone-link').href = `https://wa.me/${BUSINESS_PHONE}`;
+
+    // FAB actions
+    const waBtn = document.getElementById('wa-btn');
+    const igBtn = document.getElementById('ig-btn');
+    const callBtn = document.getElementById('call-btn');
+
+    // Prefilled whatsapp message
+    const waMessage = encodeURIComponent('Hi ClimaSynch Solutions, I need AC/fridge repair service.');
+    waBtn.href = `https://wa.me/${BUSINESS_PHONE}?text=${waMessage}`;
+
+    igBtn.href = IG_URL;
+
+    // Booking form -> whatsapp
+    function handleBooking(e){
+      e.preventDefault();
+      const name = document.getElementById('booking-name').value.trim();
+      const phone = document.getElementById('booking-phone').value.trim();
+      const location = document.getElementById('booking-location').value.trim();
+      const service = document.getElementById('booking-service').value;
+      const message = document.getElementById('booking-message').value.trim();
+
+      const text = `Booking from ${name}%0Aphone: ${phone}%0Alocation: ${location}%0Aservice: ${service}%0Amessage: ${encodeURIComponent(message)}`;
+      const waUrl = `https://wa.me/${BUSINESS_PHONE}?text=${text}`;
+      window.open(waUrl,'_blank');
+    }
+
+    function handleContact(e){
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const phone = document.getElementById('contact-phone').value.trim();
+      const text = document.getElementById('contact-text').value.trim();
+
+      const message = `Enquiry from ${name}%0A${email}%0A${phone}%0A%0A${encodeURIComponent(text)}`;
+      window.open(`https://wa.me/${BUSINESS_PHONE}?text=${message}`,'_blank');
+    }
+  </script></body>
+        </html>        <div class="title">ClimaSynch Solutions</div>
         <div style="font-size:12px;color:var(--muted);">Keeping You Cool, Every Season</div>
       </div>
     </div>
